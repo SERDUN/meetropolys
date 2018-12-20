@@ -15,27 +15,22 @@ class ScreenNavigationManager(private val activity: BaseActivity) : NavigationCo
     private var currentNavigationContainer: Int = 0
     private var activeScreen = Screen.NONE
     private val previousScreen = Screen.NONE
-    private val fragmentFactory: ScreenFragmentFactory
-    private val activityFactory: ScreenActivityFactory
-
-    init {
-        fragmentFactory = ScreenFragmentFactory()
-        activityFactory = ScreenActivityFactory()
-    }
+    private val fragmentFactory: ScreenFragmentFactory = ScreenFragmentFactory()
+    private val activityFactory: ScreenActivityFactory = ScreenActivityFactory()
 
     override fun navigateTo(screen: Screen, type: ScreenType) {
-        navigateTo(screen, type, null!!)
+        navigateTo(screen, type, null)
 
     }
 
-    override fun navigateTo(screen: Screen, type: ScreenType, bundle: Bundle) {
+    override fun navigateTo(screen: Screen, type: ScreenType, bundle: Bundle?) {
         when (type) {
             ScreenType.ACTIVITY -> navigateToActivity(screen, bundle)
             ScreenType.FRAGMENT -> navigateToFragment(screen, bundle)
         }
     }
 
-    private fun navigateToFragment(screen: Screen, bundle: Bundle) {
+    private fun navigateToFragment(screen: Screen, bundle: Bundle?) {
         when (screen) {
             Screen.SIGN_IN_FRAGMENT -> navigateToSignInFragment(bundle)
             Screen.SIGN_UP_FRAGMENT -> navigateToSignUpFragment(bundle)
@@ -43,24 +38,24 @@ class ScreenNavigationManager(private val activity: BaseActivity) : NavigationCo
 
     }
 
-    private fun navigateToSignInFragment(bundle: Bundle) {
+    private fun navigateToSignInFragment(bundle: Bundle?) {
         activeScreen = Screen.SIGN_IN_FRAGMENT
         switchFragmentScreen(Screen.SIGN_IN_FRAGMENT, bundle, true, false, currentNavigationContainer)
     }
 
-    private fun navigateToSignUpFragment(bundle: Bundle) {
+    private fun navigateToSignUpFragment(bundle: Bundle?) {
         activeScreen = Screen.SIGN_UP_FRAGMENT
         switchFragmentScreen(Screen.SIGN_UP_FRAGMENT, bundle, true, false, currentNavigationContainer)
     }
 
-    private fun navigateToActivity(screen: Screen, bundle: Bundle) {
+    private fun navigateToActivity(screen: Screen, bundle: Bundle?) {
         when (screen) {
             Screen.AUTHORIZATION_ACTIVITY -> navigateToRegisterActivity(bundle)
         }
 
     }
 
-    private fun navigateToRegisterActivity(bundle: Bundle) {
+    private fun navigateToRegisterActivity(bundle: Bundle?) {
         switchActivityScreen(Screen.AUTHORIZATION_ACTIVITY, bundle, ScreenAnimType.FADE_TYPE)
 
         activity.hideKeyboard()

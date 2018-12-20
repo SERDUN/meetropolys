@@ -1,0 +1,4 @@
+ext {
+    hawkVersion = '2.0.1'
+    calligraphyVers = '2.3.0'
+}

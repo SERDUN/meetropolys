@@ -1,12 +1,13 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply from: '../versions.gradle'
 
 android {
     compileSdkVersion 28
     defaultConfig {
+        multiDexEnabled true
         applicationId "com.meetropolys.meetropolys"
         minSdkVersion 21
         targetSdkVersion 28
@@ -38,5 +39,14 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation "com.orhanobut:hawk:2.0.1"
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.0.0'
+    implementation "uk.co.chrisjenx:calligraphy:$calligraphyVers"
+
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+
+
 
 }

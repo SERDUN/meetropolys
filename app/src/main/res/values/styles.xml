@@ -1,4 +1,15 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+    <style name="ThemeFullSCreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/transparent</item>
+        <item name="android:windowEnableSplitTouch">false</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
+        <item name="android:windowTranslucentNavigation" tools:targetApi="kitkat">true</item>
+    </style>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -28,6 +39,47 @@
         <item name="android:textSize">@dimen/start_hash_text_size</item>
         <item name="android:textColor">@color/text_color_918EA5</item>
         <item name="android:gravity">center</item>
+    </style>
+
+    <style name="bold_style" parent="android:TextAppearance">
+        <item name="fontPath">fonts/bold.otf</item>
+    </style>
+
+    <style name="WhiteTextStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="StartBoldSecondaryText" parent="WhiteTextStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">@style/bold_style</item>
+    </style>
+
+    <style name="bottomBtnsStyle" parent="StartBoldSecondaryText">
+        <item name="android:layout_marginLeft">32dp</item>
+        <item name="android:layout_marginRight">32dp</item>
+        <item name="android:layout_marginBottom">52dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/start_btns_text_size</item>
+        <item name="android:layout_alignParentBottom">true</item>
+    </style>
+
+    <style name="navigation_text_style">
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textColor">#9B99A9</item>
+    </style>
+
+    <style name="accent_text_style">
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textColor">@color/text_accent</item>
+    </style>
+
+    <style name="listBtnsStyle" parent="StartBoldSecondaryText">
+        <item name="android:layout_marginLeft">32dp</item>
+        <item name="android:layout_marginRight">32dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/start_btns_text_size</item>
+        <item name="android:layout_alignParentBottom">true</item>
     </style>
 
 

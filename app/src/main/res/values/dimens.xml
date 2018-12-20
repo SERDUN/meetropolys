@@ -7,4 +7,9 @@
     <dimen name="start_hash_text_size">21sp</dimen>
     <dimen name="start_btns_text_size">14sp</dimen>
     <dimen name="start_filter_text_size">12sp</dimen>
+    <dimen name="bottom_btn_height">38dp</dimen>
+    <dimen name="base_left_margin">32dp</dimen>
+    <dimen name="margin_top_content">-24dp</dimen>
+
+
 </resources>

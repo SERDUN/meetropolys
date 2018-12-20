@@ -3,4 +3,10 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_registration">Registration</string>
+    <string name="title_login">Login</string>
+    <string name="title_facebook">Facebook</string>
+    <string name="title_google">Google</string>
+    <string name="title_user_email">User email</string>
+    <string name="title_user_password">User password</string>
 </resources>
