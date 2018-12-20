@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="title_text_size">16sp</dimen>
+    <dimen name="start_logo_size">130dp</dimen>
+    <dimen name="start_logo_margin_top">140dp</dimen>
+    <dimen name="start_hash_text_size">21sp</dimen>
+    <dimen name="start_btns_text_size">14sp</dimen>
+    <dimen name="start_filter_text_size">12sp</dimen>
+</resources>

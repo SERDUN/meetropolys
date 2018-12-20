@@ -1,0 +1,34 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:statusBarColor">#E6E6E6</item>
+        <item name="colorControlNormal">#66C6C5DB</item>
+    </style>
+    <style name="FullCustomTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:textStyle">bold</item>
+
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="colorControlNormal">#66C6C5DB</item>
+    </style>
+
+    <style name="title_text_style">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+
+        <item name="android:textSize">@dimen/start_hash_text_size</item>
+        <item name="android:textColor">@color/text_color_918EA5</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="white">#FFFFFF</color>
+
+
+    <color name="text_col_5F5D70">#5F5D70</color>
+    <color name="text_color_35343D">#35343D</color>
+    <color name="text_color_918EA5">#918EA5</color>
+    <color name="text_color_8B99B3">#8B99B3</color>
+    <color name="text_color_C5CDDB">#C5CDDB</color>
+    <color name="text_color_AEAEAE">#AEAEAE</color>
+    <color name="pink">#FF6690</color>
+
+</resources>
