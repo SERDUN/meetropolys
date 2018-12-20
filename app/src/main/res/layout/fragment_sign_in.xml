@@ -61,21 +61,9 @@
                       android:text="Or sign in with"
                       android:layout_height="wrap_content"/>
 
-            <TextView
-                    android:id="@+id/sign_in_facebook_tv"
-                    style="@style/listBtnsStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/bottom_btn_height"
-                    android:background="@drawable/background_rect_blue"
-                    android:text="@string/title_facebook"/>
-            <TextView
-                    android:id="@+id/sign_in_google_tv"
-                    style="@style/listBtnsStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/bottom_btn_height"
-                    android:background="@drawable/background_rect_orange"
-                    android:text="@string/title_google"/>
 
+            <include layout="@layout/facebook_button_view"/>
+            <include layout="@layout/google_button_view"/>
 
         </LinearLayout>
 

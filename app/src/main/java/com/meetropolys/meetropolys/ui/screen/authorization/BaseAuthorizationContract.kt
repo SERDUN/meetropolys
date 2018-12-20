@@ -7,6 +7,8 @@ interface BaseAuthorizationContract {
     interface View : BaseView {
         fun onLoginAction():Observable<Any>
         fun onRegistrationAction():Observable<Any>
+        fun selectSignInItem()
+        fun selectSignUpItem()
 
     }
 

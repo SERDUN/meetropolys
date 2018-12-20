@@ -21,7 +21,7 @@ class BaseAuthorizationActivity : BaseActivity() {
         setContentView(R.layout.activity_base_authorization)
         handleCurrentScreen()
         var rootView = findViewById<View>(android.R.id.content)
-        var view = BaseAuthorizationView(rootView)
+        var view = BaseAuthorizationView(rootView,baseContext)
         presenter = BaseAuthorizationPresenter(view, navigationController)
     }
 

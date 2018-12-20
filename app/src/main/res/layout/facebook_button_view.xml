@@ -1,0 +1,20 @@
+<FrameLayout android:layout_width="match_parent"
+             style="@style/containerBtnStyle"
+             android:id="@+id/sign_in_facebook_tv"
+
+             android:background="@drawable/background_rect_blue"
+             android:layout_height="@dimen/bottom_btn_height"
+             xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView android:layout_width="wrap_content"
+               android:layout_marginLeft="16dp"
+               android:layout_gravity="center_vertical"
+               android:layout_height="wrap_content"
+               android:src="@drawable/ic_facebook"/>
+    <TextView
+            android:layout_gravity="center"
+            style="@style/simpleBtnsStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_facebook"/>
+</FrameLayout>
