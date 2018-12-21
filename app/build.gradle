@@ -4,6 +4,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply from: '../versions.gradle'
 
+
+def keystorePropertiesFile = rootProject.file("signing.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -25,6 +30,21 @@ android {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
     }
+    signingConfigs {
+        release {
+            storeFile rootProject.file(keystoreProperties['STORE_FILE'])
+            storePassword keystoreProperties['STORE_PASSWORD']
+            keyAlias keystoreProperties['KEY_ALIAS']
+            keyPassword keystoreProperties['KEY_PASSWORD']
+        }
+        debug {
+            storeFile rootProject.file(keystoreProperties['STORE_FILE'])
+            storePassword keystoreProperties['STORE_PASSWORD']
+            keyAlias keystoreProperties['KEY_ALIAS_DEV']
+            keyPassword keystoreProperties['KEY_PASSWORD_DEV']
+        }
+    }
+
 }
 
 dependencies {
@@ -32,7 +52,7 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation "com.android.support:appcompat-v7:$appCompatVers"
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:support-v4:28.0.0'
     testImplementation 'junit:junit:4.12'
@@ -45,6 +65,7 @@ dependencies {
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.google.android.gms:play-services-auth:15.0.1'
 
 
 }
