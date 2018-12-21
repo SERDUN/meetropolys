@@ -1,5 +1,6 @@
 <FrameLayout android:layout_width="match_parent"
              android:id="@+id/sign_in_google_tv"
+             android:clickable="true"
              style="@style/containerBtnStyle"
              android:background="@drawable/background_rect_orange"
              android:layout_height="@dimen/bottom_btn_height"

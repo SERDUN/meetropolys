@@ -2,21 +2,32 @@ package com.meetropolys.meetropolys.services.navigation
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
 import android.util.Log
 import com.meetropolys.meetropolys.R
 import com.meetropolys.meetropolys.services.navigation.factory.ScreenActivityFactory
 import com.meetropolys.meetropolys.services.navigation.factory.ScreenFragmentFactory
 import com.meetropolys.meetropolys.ui.base.BaseActivity
+import java.util.*
 
 class ScreenNavigationManager(private val activity: BaseActivity) : NavigationController {
+//    override fun isStackActivityEmpty(): Boolean {
+//        return stackActivity.isEmpty()
+//    }
+//
+//    override fun returnToLastActivity() {
+//        var screen = stackActivity.pop()
+//        switchActivityScreen(screen, null, ScreenAnimType.RIGHT_TO_LEFT_TYPE)
+//        activity.hideKeyboard()
+//        activity.finish()
+//        activity.freeMemory()
+//    }
+
     private var currentNavigationContainer: Int = 0
     private var activeScreen = Screen.NONE
-    private val previousScreen = Screen.NONE
+    private var previousScreen = Screen.AUTHORIZATION_ACTIVITY
     private val fragmentFactory: ScreenFragmentFactory = ScreenFragmentFactory()
     private val activityFactory: ScreenActivityFactory = ScreenActivityFactory()
+    private var stackActivity = Stack<Screen>()
 
     override fun navigateTo(screen: Screen, type: ScreenType) {
         navigateTo(screen, type, null)
@@ -40,30 +51,40 @@ class ScreenNavigationManager(private val activity: BaseActivity) : NavigationCo
 
     private fun navigateToSignInFragment(bundle: Bundle?) {
         activeScreen = Screen.SIGN_IN_FRAGMENT
-        switchFragmentScreen(Screen.SIGN_IN_FRAGMENT, bundle, true, false, currentNavigationContainer)
+        switchFragmentScreen(Screen.SIGN_IN_FRAGMENT, bundle, false, false, currentNavigationContainer)
     }
 
     private fun navigateToSignUpFragment(bundle: Bundle?) {
         activeScreen = Screen.SIGN_UP_FRAGMENT
-        switchFragmentScreen(Screen.SIGN_UP_FRAGMENT, bundle, true, false, currentNavigationContainer)
+        switchFragmentScreen(Screen.SIGN_UP_FRAGMENT, bundle, false, false, currentNavigationContainer)
     }
 
     private fun navigateToActivity(screen: Screen, bundle: Bundle?) {
         when (screen) {
             Screen.AUTHORIZATION_ACTIVITY -> navigateToRegisterActivity(bundle)
+            Screen.CONFIRM_EMAIL_ACTIVITY -> navigateToConfirmEmailActivity(bundle)
         }
 
     }
 
     private fun navigateToRegisterActivity(bundle: Bundle?) {
-        switchActivityScreen(Screen.AUTHORIZATION_ACTIVITY, bundle, ScreenAnimType.FADE_TYPE)
+        switchActivityScreen(Screen.AUTHORIZATION_ACTIVITY, bundle, ScreenAnimType.NONE_TYPE)
 
         activity.hideKeyboard()
         activity.finish()
         activity.freeMemory()
     }
 
-    private fun switchActivityScreen(type: Screen, bundle: Bundle?, animate: ScreenAnimType) {
+    private fun navigateToConfirmEmailActivity(bundle: Bundle?) {
+        switchActivityScreen(Screen.CONFIRM_EMAIL_ACTIVITY, bundle, ScreenAnimType.LEFT_TO_RIGHT_TYPE)
+        activity.hideKeyboard()
+        // activity.finish()
+        activity.freeMemory()
+    }
+
+    private fun switchActivityScreen(type: Screen, bundle: Bundle?, animate: ScreenAnimType?) {
+        stackActivity.push(previousScreen)
+        previousScreen = type
         val intent = activityFactory.getActivityByType(type)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 
@@ -72,23 +93,25 @@ class ScreenNavigationManager(private val activity: BaseActivity) : NavigationCo
         }
 
         activity.startActivity(intent)
-        when (animate) {
-            ScreenAnimType.FADE_TYPE -> activity.overridePendingTransition(
-                android.R.anim.fade_in,
-                android.R.anim.fade_out
-            )
-            ScreenAnimType.RIGHT_TO_LEFT_TYPE -> activity.overridePendingTransition(
-                R.anim.right_to_left_in,
-                R.anim.right_to_left_out
-            )
-            ScreenAnimType.LEFT_TO_RIGHT_TYPE -> activity.overridePendingTransition(
-                R.anim.left_to_right_in,
-                R.anim.left_to_right_out
-            )
-            ScreenAnimType.UP_TO_DOWN_TYPE -> activity.overridePendingTransition(
-                R.anim.up_to_down_in,
-                R.anim.up_to_down_out
-            )
+        animate?.let {
+            when (it) {
+                ScreenAnimType.FADE_TYPE -> activity.overridePendingTransition(
+                    android.R.anim.fade_in,
+                    android.R.anim.fade_out
+                )
+                ScreenAnimType.RIGHT_TO_LEFT_TYPE -> activity.overridePendingTransition(
+                    R.anim.right_to_left_in,
+                    R.anim.right_to_left_out
+                )
+                ScreenAnimType.LEFT_TO_RIGHT_TYPE -> activity.overridePendingTransition(
+                    R.anim.left_to_right_in,
+                    R.anim.left_to_right_out
+                )
+                ScreenAnimType.UP_TO_DOWN_TYPE -> activity.overridePendingTransition(
+                    R.anim.up_to_down_in,
+                    R.anim.up_to_down_out
+                )
+            }
         }
     }
 

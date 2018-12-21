@@ -1,6 +1,7 @@
 <FrameLayout android:layout_width="match_parent"
              style="@style/containerBtnStyle"
              android:id="@+id/sign_in_facebook_tv"
+             android:clickable="true"
 
              android:background="@drawable/background_rect_blue"
              android:layout_height="@dimen/bottom_btn_height"

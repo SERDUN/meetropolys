@@ -6,9 +6,9 @@ enum class Screen {
     //Fragments
     SIGN_IN_FRAGMENT,
     SIGN_UP_FRAGMENT,
-    CONFIRM_EMAIL_FRAGMENT,
 
 
     //Activity
+    CONFIRM_EMAIL_ACTIVITY,
     AUTHORIZATION_ACTIVITY
 }

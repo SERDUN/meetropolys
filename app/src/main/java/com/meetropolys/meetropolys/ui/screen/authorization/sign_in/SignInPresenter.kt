@@ -18,6 +18,7 @@ class SignInPresenter(
     @SuppressLint("CheckResult")
     override fun resume() {
         view.onGoogleLoginAction().subscribe {
+            navigationController.navigateTo(Screen.CONFIRM_EMAIL_ACTIVITY,ScreenType.ACTIVITY)
 
         }
         view.onFacebookLoginAction().subscribe {

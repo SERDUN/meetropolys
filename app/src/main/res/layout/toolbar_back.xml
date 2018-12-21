@@ -1,0 +1,15 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:id="@+id/sign_in_facebook_tv"
+             android:clickable="true"
+             android:background="@color/blue"
+             android:layout_height="@dimen/height_back_toolbar">
+
+    <ImageView
+            android:padding="16dp"
+            android:layout_gravity="bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_back_black_24dp"/>
+
+</FrameLayout>

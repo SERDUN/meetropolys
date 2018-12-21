@@ -22,7 +22,6 @@ class ScreenFragmentFactory {
         when (type) {
             Screen.SIGN_IN_FRAGMENT -> return SignInFragment::class.java
             Screen.SIGN_UP_FRAGMENT -> return SignUpFragment::class.java
-            Screen.CONFIRM_EMAIL_FRAGMENT -> return ConfirmEmailFragment::class.java
         }
         return BaseFragment::class.java
 

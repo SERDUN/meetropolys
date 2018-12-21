@@ -21,8 +21,8 @@ public class BaseActivity extends AppCompatActivity {
         navigationController = new ScreenNavigationManager(this);
         super.onCreate(savedInstanceState);
 
-
     }
+
 
 
     public void hideKeyboard() {

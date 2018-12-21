@@ -29,5 +29,17 @@ class SignInFragment : Fragment() {
    return rootView;
     }
 
+    override fun onPause() {
+        presenter.pause()
 
+        super.onPause()
+
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        presenter.resume()
+
+    }
 }
