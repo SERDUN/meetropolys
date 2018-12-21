@@ -23,7 +23,7 @@ class SignInFragment : Fragment() {
         var rootView= inflater.inflate(R.layout.fragment_sign_in, container, false)
 
 
-        var view = SignInView(rootView,context!!)
+        var view = SignInView(rootView,(activity as BaseActivity)!!)
         presenter = SignInPresenter(view, (activity as BaseActivity).navigationController)
 
    return rootView;
@@ -31,7 +31,6 @@ class SignInFragment : Fragment() {
 
     override fun onPause() {
         presenter.pause()
-
         super.onPause()
 
     }

@@ -17,3 +17,4 @@ app/prod/*
 app/dev/
 app/dev/*
 
+app/release/

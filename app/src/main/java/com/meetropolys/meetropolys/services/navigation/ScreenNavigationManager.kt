@@ -63,6 +63,7 @@ class ScreenNavigationManager(private val activity: BaseActivity) : NavigationCo
         when (screen) {
             Screen.AUTHORIZATION_ACTIVITY -> navigateToRegisterActivity(bundle)
             Screen.CONFIRM_EMAIL_ACTIVITY -> navigateToConfirmEmailActivity(bundle)
+            Screen.PROFILE_ACTIVITY -> navigateToProfileActivity(bundle)
         }
 
     }
@@ -77,6 +78,13 @@ class ScreenNavigationManager(private val activity: BaseActivity) : NavigationCo
 
     private fun navigateToConfirmEmailActivity(bundle: Bundle?) {
         switchActivityScreen(Screen.CONFIRM_EMAIL_ACTIVITY, bundle, ScreenAnimType.LEFT_TO_RIGHT_TYPE)
+        activity.hideKeyboard()
+        // activity.finish()
+        activity.freeMemory()
+    }
+
+    private fun navigateToProfileActivity(bundle: Bundle?) {
+        switchActivityScreen(Screen.PROFILE_ACTIVITY, bundle, ScreenAnimType.LEFT_TO_RIGHT_TYPE)
         activity.hideKeyboard()
         // activity.finish()
         activity.freeMemory()

@@ -9,4 +9,14 @@
     <string name="title_google">Google+</string>
     <string name="title_user_email">User email</string>
     <string name="title_user_password">User password</string>
+    <string name="client_id">787220961912-sq51po8qls6smifgp7hfc0as2qo41s9n.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">2254925531449187</string>
+    <string name="fb_login_protocol_scheme">fb2254925531449187</string>
+
+    <string-array name="my_facebook_permission">
+        <item>public_profile</item>
+        <item>email</item>
+
+    </string-array>
+
 </resources>

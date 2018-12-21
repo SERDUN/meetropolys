@@ -6,14 +6,20 @@ import android.view.TextureView
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
+import com.facebook.login.LoginManager
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.jakewharton.rxbinding2.view.RxView
 import com.meetropolys.meetropolys.MeetroopolysApplication
 import com.meetropolys.meetropolys.R
+import com.meetropolys.meetropolys.services.Constants.GOOGLE_AUTH_KEY
+import com.meetropolys.meetropolys.ui.base.BaseActivity
+import com.meetropolys.meetropolys.ui.base.mvp.SocialView
 import io.reactivex.Observable
+import java.util.*
 
 
-class SignInView(var view: View, var context: Context) : SignInContract.View {
-
+class SignInView(var view: View, var activity: BaseActivity) : SocialView(activity), SignInContract.View {
     var googleSignInView = view.findViewById<FrameLayout>(R.id.sign_in_google_tv)
     var facebookSignInView = view.findViewById<FrameLayout>(R.id.sign_in_facebook_tv)
 

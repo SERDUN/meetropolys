@@ -3,6 +3,7 @@ package com.meetropolys.meetropolys.ui.screen.authorization
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import com.meetropolys.meetropolys.R
 import com.meetropolys.meetropolys.services.Constants
 import com.meetropolys.meetropolys.services.navigation.Screen
@@ -20,9 +21,10 @@ class BaseAuthorizationActivity : BaseActivity() {
         SystemUtils.setTransparentForStatusBar(this)
         setContentView(R.layout.activity_base_authorization)
         handleCurrentScreen()
+
         var rootView = findViewById<View>(android.R.id.content)
         var view = BaseAuthorizationView(rootView,baseContext)
-        presenter = BaseAuthorizationPresenter(view, navigationController)
+        presenter = BaseAuthorizationPresenter(view, navigationController!!)
     }
 
     private fun handleCurrentScreen() {
