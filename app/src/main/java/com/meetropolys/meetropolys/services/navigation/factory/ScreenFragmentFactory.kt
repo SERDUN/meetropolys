@@ -2,7 +2,7 @@ package com.meetropolys.meetropolys.services.navigation.factory
 
 import android.content.Context
 import android.support.v4.app.Fragment
-import com.meetropolys.meetropolys.MeetroopolysApplication
+import com.meetropolys.meetropolys.MeetropolysApplication
 import com.meetropolys.meetropolys.services.navigation.Screen
 import com.meetropolys.meetropolys.ui.base.BaseFragment
 import com.meetropolys.meetropolys.ui.screen.authorization.sign_in.SignInFragment
@@ -13,7 +13,7 @@ class ScreenFragmentFactory {
 
     fun getFragmentByType(type: Screen): Fragment {
         val clazz = getFragmentClassByType(type)
-        return Fragment.instantiate(MeetroopolysApplication.instance.applicationContext, clazz.name)
+        return Fragment.instantiate(MeetropolysApplication.instance.applicationContext, clazz.name)
     }
 
 

@@ -5,10 +5,10 @@ import com.meetropolys.meetropolys.services.Constants
 import com.orhanobut.hawk.Hawk
 
 
-class MeetroopolysApplication : MultiDexApplication() {
+class MeetropolysApplication : MultiDexApplication() {
 
     companion object {
-        lateinit var instance: MeetroopolysApplication
+        lateinit var instance: MeetropolysApplication
     }
 
     override fun onCreate() {

@@ -1,29 +1,17 @@
 package com.meetropolys.meetropolys.ui.screen.authorization.sign_up
 
 import android.annotation.SuppressLint
-import android.support.annotation.NonNull
-import android.util.Log
-import android.view.View
-import com.facebook.CallbackManager
-import com.facebook.FacebookCallback
-import com.facebook.FacebookException
-import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
-import com.google.android.gms.auth.GoogleAuthUtil
-import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
-import com.meetropolys.meetropolys.MeetroopolysApplication
+import com.meetropolys.meetropolys.MeetropolysApplication
 import com.meetropolys.meetropolys.R
 import com.meetropolys.meetropolys.services.Constants
-import com.meetropolys.meetropolys.services.Constants.GOOGLE_AUTH_KEY
 import com.meetropolys.meetropolys.services.navigation.NavigationController
 import com.meetropolys.meetropolys.services.navigation.Screen
 import com.meetropolys.meetropolys.services.navigation.ScreenType
+import com.meetropolys.meetropolys.tools.AppHelper
 import com.meetropolys.meetropolys.tools.Tools
 import com.meetropolys.meetropolys.ui.base.mvp.SocialPresenter
-import com.orhanobut.hawk.Hawk
 import java.lang.StringBuilder
 
 class SignUpPresenter(var view: SignUpContract.View, var navigationController: NavigationController) :
@@ -46,8 +34,9 @@ class SignUpPresenter(var view: SignUpContract.View, var navigationController: N
 
     private fun createAccount() {
         if (isCorrectEmail() && isCorrectPassword()) {
-              navigationController.navigateTo(Screen.CONFIRM_EMAIL_ACTIVITY, ScreenType.ACTIVITY)
-
+            navigationController.navigateTo(Screen.CONFIRM_EMAIL_ACTIVITY, ScreenType.ACTIVITY)
+            AppHelper.api.saveUserInformation("Gari Poter " + System.currentTimeMillis())
+            AppHelper.api.saveUserLoginPassword(view.getUserPasswordText(), view.getUserEmailText())
         }
 
     }
@@ -87,7 +76,7 @@ class SignUpPresenter(var view: SignUpContract.View, var navigationController: N
         val password = view.getUserPasswordText()
         if (password.isEmpty()) {
             view.showWarningMessage(
-                MeetroopolysApplication.instance.getResources().getString(R.string.error_empty_password),
+                MeetropolysApplication.instance.getResources().getString(R.string.error_empty_password),
                 10000
             )
 
@@ -95,7 +84,7 @@ class SignUpPresenter(var view: SignUpContract.View, var navigationController: N
         }
         if (password.length < 6 || password.length > 128) {
             view.showWarningMessage(
-                MeetroopolysApplication.instance.getResources().getString(R.string.error_password),
+                MeetropolysApplication.instance.getResources().getString(R.string.error_password),
                 10000
             )
             return false
@@ -107,14 +96,14 @@ class SignUpPresenter(var view: SignUpContract.View, var navigationController: N
         val email = view.getUserEmailText()
         if (email.isEmpty()) {
             view.showWarningMessage(
-                MeetroopolysApplication.instance.getResources().getString(R.string.error_empty_email),
+                MeetropolysApplication.instance.getResources().getString(R.string.error_empty_email),
                 10000
             )
             return false
         }
         if (!Tools.isValidEmail(email)) {
             view.showWarningMessage(
-                MeetroopolysApplication.instance.getResources().getString(R.string.error_empty_email),
+                MeetropolysApplication.instance.getResources().getString(R.string.error_empty_email),
                 10000
             )
             return false

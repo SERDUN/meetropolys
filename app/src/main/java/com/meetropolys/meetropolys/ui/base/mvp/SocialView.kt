@@ -3,7 +3,7 @@ package com.meetropolys.meetropolys.ui.base.mvp
 import com.facebook.login.LoginManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.meetropolys.meetropolys.MeetroopolysApplication
+import com.meetropolys.meetropolys.MeetropolysApplication
 import com.meetropolys.meetropolys.R
 import com.meetropolys.meetropolys.services.Constants
 import com.meetropolys.meetropolys.ui.base.BaseActivity
@@ -12,7 +12,7 @@ import java.util.*
 
 open class SocialView(var baseActivity: BaseActivity) : SocialContract {
     var premmisions =
-        Arrays.asList(MeetroopolysApplication.instance.resources.getStringArray(R.array.my_facebook_permission))[0]
+        Arrays.asList(MeetropolysApplication.instance.resources.getStringArray(R.array.my_facebook_permission))[0]
 
     val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
         .requestIdToken(baseActivity.getString(R.string.client_id))

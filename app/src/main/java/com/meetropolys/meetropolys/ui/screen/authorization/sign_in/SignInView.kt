@@ -1,27 +1,23 @@
 package com.meetropolys.meetropolys.ui.screen.authorization.sign_in
 
-import android.content.Context
-import android.support.v4.widget.TextViewCompat
-import android.view.TextureView
+import android.support.design.widget.TextInputEditText
 import android.view.View
 import android.widget.FrameLayout
-import android.widget.TextView
-import com.facebook.login.LoginManager
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.jakewharton.rxbinding2.view.RxView
-import com.meetropolys.meetropolys.MeetroopolysApplication
 import com.meetropolys.meetropolys.R
-import com.meetropolys.meetropolys.services.Constants.GOOGLE_AUTH_KEY
 import com.meetropolys.meetropolys.services.message.SystemMessage
 import com.meetropolys.meetropolys.ui.base.BaseActivity
 import com.meetropolys.meetropolys.ui.base.mvp.SocialView
 import io.reactivex.Observable
-import java.util.*
 
 
 class SignInView(var view: View, var activity: BaseActivity, var systemMessage: SystemMessage) : SocialView(activity),
     SignInContract.View {
+    override fun onSignInAccount(): Observable<Any> {
+        return RxView.clicks(view.findViewById(R.id.create_acc_btn))
+
+    }
+
     override fun getUserPassword(): Observable<CharSequence> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -30,6 +26,13 @@ class SignInView(var view: View, var activity: BaseActivity, var systemMessage: 
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun getUserPasswordText(): String {
+        return view.findViewById<TextInputEditText>(R.id.pass_tie).text.toString()
+    }
+
+    override fun getUserEmailText(): String {
+        return view.findViewById<TextInputEditText>(R.id.email_tie).text.toString()
+    }
     override fun showWarningMessage(msg: String, time: Long) {
         systemMessage.showMessage(msg, 1000)
     }

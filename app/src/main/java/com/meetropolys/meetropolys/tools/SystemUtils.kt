@@ -9,7 +9,7 @@ import android.os.Build
 import android.support.v7.app.AppCompatDelegate
 import android.view.View
 import android.view.WindowManager
-import com.meetropolys.meetropolys.MeetroopolysApplication
+import com.meetropolys.meetropolys.MeetropolysApplication
 
 
 object SystemUtils {
@@ -27,7 +27,7 @@ object SystemUtils {
 
     @TargetApi(value = Build.VERSION_CODES.HONEYCOMB_MR2)
     private fun initDisplayDimensions() {
-        val ctx = MeetroopolysApplication.instance
+        val ctx = MeetropolysApplication.instance
         val wm = ctx.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val display = wm.defaultDisplay
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {

@@ -2,7 +2,7 @@ package com.meetropolys.meetropolys.services.navigation.factory
 
 import android.app.Activity
 import android.content.Intent
-import com.meetropolys.meetropolys.MeetroopolysApplication
+import com.meetropolys.meetropolys.MeetropolysApplication
 import com.meetropolys.meetropolys.services.navigation.Screen
 import com.meetropolys.meetropolys.ui.profile.ProfileActivity
 import com.meetropolys.meetropolys.ui.screen.authorization.BaseAuthorizationActivity
@@ -11,7 +11,7 @@ import com.meetropolys.meetropolys.ui.screen.authorization.confirm_email.Confirm
 class ScreenActivityFactory {
     fun getActivityByType(type: Screen): Intent {
         val clazz = getActivityClassByType(type)
-        return Intent(MeetroopolysApplication.instance.applicationContext, clazz)
+        return Intent(MeetropolysApplication.instance.applicationContext, clazz)
     }
 
     fun getActivityClassByType(type: Screen): Class<out Activity> {

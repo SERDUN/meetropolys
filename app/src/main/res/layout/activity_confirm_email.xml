@@ -48,13 +48,13 @@
 
                     android:layout_marginTop="32dp"
                     android:elevation="8dp"
-                    android:id="@+id/create_acc_btn"
+                    android:id="@+id/send_again_btn"
                     style="@style/bottomBtnsStyle"
                     android:textColor="@color/blue"
                     android:background="@drawable/background_rect_white"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/bottom_btn_height"
-                    android:text="Login"/>
+                    android:text="@string/send_again"/>
 
 
         </LinearLayout>

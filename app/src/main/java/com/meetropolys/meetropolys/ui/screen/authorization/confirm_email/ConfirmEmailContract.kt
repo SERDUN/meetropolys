@@ -7,9 +7,8 @@ interface ConfirmEmailContract {
     interface View : BaseView {
         fun onBackAction():Observable<Any>
         fun closeScreen()
-//        fun onRegistrationAction():Observable<Any>
-//        fun selectSignInItem()
-//        fun selectSignUpItem()
+        fun onSendAgain():Observable<Any>
+        fun showToast(string: String)
 
     }
 

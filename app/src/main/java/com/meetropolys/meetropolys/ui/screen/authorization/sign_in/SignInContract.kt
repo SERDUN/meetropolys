@@ -15,6 +15,9 @@ interface SignInContract {
         fun showWarningMessage(int: String,time:Long)
         fun getUserPassword(): Observable<CharSequence>
         fun getUserEmail(): Observable<CharSequence>
+        fun getUserPasswordText(): String
+        fun getUserEmailText(): String
+        fun onSignInAccount():Observable<Any>
 
 
     }

@@ -17,6 +17,9 @@
     <string name="error_empty_password">Password should not be empty.</string>
     <string name="error_password">Password must contain 6 – 128 characters</string>
     <string name="error_empty_email">Email should not be empty.</string>
+    <string name="send_again">Send again</string>
+    <string name="text_email_send">The message has been sent to your email account</string>
+    <string name="title_invalid_pass_or_email">Invalid password or email</string>
 
     <string-array name="my_facebook_permission">
         <item>public_profile</item>

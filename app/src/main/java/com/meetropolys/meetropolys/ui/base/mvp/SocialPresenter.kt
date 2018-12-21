@@ -12,7 +12,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
-import com.meetropolys.meetropolys.MeetroopolysApplication
+import com.meetropolys.meetropolys.MeetropolysApplication
 import com.meetropolys.meetropolys.services.Constants
 import io.reactivex.disposables.Disposable
 import android.os.Looper
@@ -69,7 +69,7 @@ abstract class SocialPresenter(var socialView: SocialContract) {
         try {
             val account = completedTask.getResult(ApiException::class.java)
             Thread(Runnable {
-                var token = GoogleAuthUtil.getToken(MeetroopolysApplication.instance, account!!.account, GOOGLE_SCOPES)
+                var token = GoogleAuthUtil.getToken(MeetropolysApplication.instance, account!!.account, GOOGLE_SCOPES)
                 Handler(Looper.getMainLooper()).post {
                     successGoogleAuth(token, account)
                 }

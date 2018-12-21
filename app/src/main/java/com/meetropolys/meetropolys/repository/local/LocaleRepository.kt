@@ -6,6 +6,11 @@ interface LocaleRepository{
     public fun saveUserInformation(name:String)
 
 
+    public fun getUserPassword():String
+    public fun getUserEmail():String
+    public fun getUserInformation():String
+
+
 
 
 }

@@ -1,27 +1,17 @@
 package com.meetropolys.meetropolys.ui.screen.authorization.sign_in
 
 import android.annotation.SuppressLint
-import android.support.annotation.NonNull
-import android.util.Log
-import android.view.View
-import com.facebook.CallbackManager
-import com.facebook.FacebookCallback
-import com.facebook.FacebookException
-import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
-import com.google.android.gms.auth.GoogleAuthUtil
-import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
-import com.meetropolys.meetropolys.MeetroopolysApplication
+import com.meetropolys.meetropolys.MeetropolysApplication
+import com.meetropolys.meetropolys.R
 import com.meetropolys.meetropolys.services.Constants
-import com.meetropolys.meetropolys.services.Constants.GOOGLE_AUTH_KEY
 import com.meetropolys.meetropolys.services.navigation.NavigationController
 import com.meetropolys.meetropolys.services.navigation.Screen
 import com.meetropolys.meetropolys.services.navigation.ScreenType
+import com.meetropolys.meetropolys.tools.AppHelper
+import com.meetropolys.meetropolys.tools.Tools
 import com.meetropolys.meetropolys.ui.base.mvp.SocialPresenter
-import com.orhanobut.hawk.Hawk
 import java.lang.StringBuilder
 
 class SignInPresenter(var view: SignInContract.View, var navigationController: NavigationController) :
@@ -35,8 +25,30 @@ class SignInPresenter(var view: SignInContract.View, var navigationController: N
         }
         view.onFacebookLoginAction().subscribe {
             view.facebookAuth()
+        }
+        view.onSignInAccount().subscribe {
+            signIn()
+        }
+    }
+
+
+    private fun signIn() {
+        if (isCorrectEmail() && isCorrectPassword()) {
+            var localPass = AppHelper.api.getUserPassword()
+            var localEmail = AppHelper.api.getUserEmail()
+            if (localEmail != view.getUserEmailText() || localPass != view.getUserPasswordText()) {
+                view.showWarningMessage(
+                    MeetropolysApplication.instance.getString(R.string.title_invalid_pass_or_email),
+                    10000
+                )
+            } else {
+                navigationController.navigateTo(Screen.PROFILE_ACTIVITY, ScreenType.ACTIVITY)
+
+            }
+
 
         }
+
     }
 
     override fun pause() {
@@ -69,6 +81,45 @@ class SignInPresenter(var view: SignInContract.View, var navigationController: N
 
     }
 
+
+    private fun isCorrectPassword(): Boolean {
+        val password = view.getUserPasswordText()
+        if (password.isEmpty()) {
+            view.showWarningMessage(
+                MeetropolysApplication.instance.getResources().getString(R.string.error_empty_password),
+                10000
+            )
+
+            return false
+        }
+        if (password.length < 6 || password.length > 128) {
+            view.showWarningMessage(
+                MeetropolysApplication.instance.getResources().getString(R.string.error_password),
+                10000
+            )
+            return false
+        }
+        return true
+    }
+
+    private fun isCorrectEmail(): Boolean {
+        val email = view.getUserEmailText()
+        if (email.isEmpty()) {
+            view.showWarningMessage(
+                MeetropolysApplication.instance.getResources().getString(R.string.error_empty_email),
+                10000
+            )
+            return false
+        }
+        if (!Tools.isValidEmail(email)) {
+            view.showWarningMessage(
+                MeetropolysApplication.instance.getResources().getString(R.string.error_empty_email),
+                10000
+            )
+            return false
+        }
+        return true
+    }
 }
 
 
