@@ -12,6 +12,8 @@
     </style>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -81,6 +83,12 @@
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">26sp</item>
+    </style>
+
+    <style name="simple_text_white_style_white_normal">
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="simple_text_style_black_medium">

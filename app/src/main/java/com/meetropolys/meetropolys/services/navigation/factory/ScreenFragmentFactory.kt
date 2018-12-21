@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment
 import com.meetropolys.meetropolys.MeetroopolysApplication
 import com.meetropolys.meetropolys.services.navigation.Screen
 import com.meetropolys.meetropolys.ui.base.BaseFragment
-import com.meetropolys.meetropolys.ui.screen.authorization.confirm_email.ConfirmEmailFragment
 import com.meetropolys.meetropolys.ui.screen.authorization.sign_in.SignInFragment
 import com.meetropolys.meetropolys.ui.screen.authorization.sign_up.SignUpFragment
 

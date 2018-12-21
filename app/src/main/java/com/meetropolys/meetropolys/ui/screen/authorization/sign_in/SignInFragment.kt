@@ -10,7 +10,8 @@ import android.view.ViewGroup
 import com.meetropolys.meetropolys.R
 import com.meetropolys.meetropolys.ui.base.BaseActivity
 import com.meetropolys.meetropolys.ui.screen.authorization.BaseAuthorizationPresenter
-import com.meetropolys.meetropolys.ui.screen.authorization.BaseAuthorizationView
+
+//import com.meetropolys.meetropolys.ui.screen.authorization.BaseAuthorizationView
 
 class SignInFragment : Fragment() {
     lateinit var presenter: SignInPresenter
@@ -20,13 +21,13 @@ class SignInFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var rootView= inflater.inflate(R.layout.fragment_sign_in, container, false)
+        var rootView = inflater.inflate(R.layout.fragment_sign_in, container, false)
+        var baseActivity = (activity as BaseActivity)
 
-
-        var view = SignInView(rootView,(activity as BaseActivity)!!)
+        var view = SignInView(rootView, baseActivity, baseActivity.systemMessage)
         presenter = SignInPresenter(view, (activity as BaseActivity).navigationController)
 
-   return rootView;
+        return rootView;
     }
 
     override fun onPause() {

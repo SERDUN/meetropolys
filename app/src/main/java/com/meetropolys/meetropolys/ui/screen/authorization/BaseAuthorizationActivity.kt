@@ -18,12 +18,11 @@ class BaseAuthorizationActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        SystemUtils.setTransparentForStatusBar(this)
         setContentView(R.layout.activity_base_authorization)
         handleCurrentScreen()
-
         var rootView = findViewById<View>(android.R.id.content)
-        var view = BaseAuthorizationView(rootView,baseContext)
+        var view = BaseAuthorizationView(rootView, baseContext)
+        systemMessage.setViewForMessage(findViewById(R.id.container_message_ll), findViewById(R.id.message_tv))
         presenter = BaseAuthorizationPresenter(view, navigationController!!)
     }
 
@@ -40,11 +39,15 @@ class BaseAuthorizationActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        presenter?.resume()
+        presenter?.let {
+            it.resume()
+        }
     }
 
     override fun onPause() {
-        presenter?.pause()
+        presenter?.let {
+            it.pause()
+        }
         super.onPause()
     }
 }

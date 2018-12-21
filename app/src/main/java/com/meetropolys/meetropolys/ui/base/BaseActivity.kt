@@ -9,6 +9,8 @@ import android.os.Looper
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
+import com.meetropolys.meetropolys.services.message.SystemMessage
+import com.meetropolys.meetropolys.services.message.SystemMessageManager
 import com.meetropolys.meetropolys.services.navigation.NavigationController
 import com.meetropolys.meetropolys.services.navigation.ScreenNavigationManager
 
@@ -19,8 +21,10 @@ open class BaseActivity : AppCompatActivity() {
 
     public var onActivityResultListener = io.reactivex.subjects.PublishSubject.create<OnActivityResult>()
 
-  lateinit  var navigationController: NavigationController
+    lateinit var navigationController: NavigationController
         private set
+
+    public var systemMessage: SystemMessage = SystemMessageManager()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.i(TAG, " onCreate()" + if (savedInstanceState != null) " recreating" else "")

@@ -7,7 +7,6 @@ import com.meetropolys.meetropolys.services.navigation.Screen
 import com.meetropolys.meetropolys.ui.profile.ProfileActivity
 import com.meetropolys.meetropolys.ui.screen.authorization.BaseAuthorizationActivity
 import com.meetropolys.meetropolys.ui.screen.authorization.confirm_email.ConfirmEmailActivity
-import com.meetropolys.meetropolys.ui.screen.authorization.confirm_email.ConfirmEmailFragment
 
 class ScreenActivityFactory {
     fun getActivityByType(type: Screen): Intent {

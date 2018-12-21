@@ -1,5 +1,6 @@
 package com.meetropolys.meetropolys.ui.base.mvp
 
+import android.os.Handler
 import android.support.annotation.NonNull
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -14,6 +15,8 @@ import com.google.android.gms.tasks.Task
 import com.meetropolys.meetropolys.MeetroopolysApplication
 import com.meetropolys.meetropolys.services.Constants
 import io.reactivex.disposables.Disposable
+import android.os.Looper
+
 
 abstract class SocialPresenter(var socialView: SocialContract) {
     private var callbackManager = CallbackManager.Factory.create();
@@ -58,7 +61,7 @@ abstract class SocialPresenter(var socialView: SocialContract) {
 
 
     public open fun pause() {
-       // LoginManager.getInstance().unregisterCallback(callbackManager)
+        // LoginManager.getInstance().unregisterCallback(callbackManager)
     }
 
 
@@ -67,7 +70,9 @@ abstract class SocialPresenter(var socialView: SocialContract) {
             val account = completedTask.getResult(ApiException::class.java)
             Thread(Runnable {
                 var token = GoogleAuthUtil.getToken(MeetroopolysApplication.instance, account!!.account, GOOGLE_SCOPES)
-                successGoogleAuth(token, account)
+                Handler(Looper.getMainLooper()).post {
+                    successGoogleAuth(token, account)
+                }
             }).start()
         } catch (e: ApiException) {
             socialError(Constants.SOCIAL_GOOGLE_ID, e.localizedMessage)

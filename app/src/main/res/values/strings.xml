@@ -12,6 +12,11 @@
     <string name="client_id">787220961912-sq51po8qls6smifgp7hfc0as2qo41s9n.apps.googleusercontent.com</string>
     <string name="facebook_app_id">2254925531449187</string>
     <string name="fb_login_protocol_scheme">fb2254925531449187</string>
+    <string name="error_actitvity_was_destroyed">Probably the activity was destroyed</string>
+    <string name="create_account">Create account</string>
+    <string name="error_empty_password">Password should not be empty.</string>
+    <string name="error_password">Password must contain 6 – 128 characters</string>
+    <string name="error_empty_email">Email should not be empty.</string>
 
     <string-array name="my_facebook_permission">
         <item>public_profile</item>

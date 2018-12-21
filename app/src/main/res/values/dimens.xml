@@ -9,8 +9,11 @@
     <dimen name="start_filter_text_size">12sp</dimen>
     <dimen name="bottom_btn_height">38dp</dimen>
     <dimen name="base_left_margin">32dp</dimen>
-    <dimen name="margin_top_content">-24dp</dimen>
+    <dimen name="base_right_margin">32dp</dimen>
+    <dimen name="margin_top_content">-32dp</dimen>
     <dimen name="height_back_toolbar">104dp</dimen>
+    <dimen name="height_bottom_message">50dp</dimen>
+
 
 
 </resources>

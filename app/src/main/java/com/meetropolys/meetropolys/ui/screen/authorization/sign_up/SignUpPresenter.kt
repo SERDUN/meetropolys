@@ -1,4 +1,4 @@
-package com.meetropolys.meetropolys.ui.screen.authorization.sign_in
+package com.meetropolys.meetropolys.ui.screen.authorization.sign_up
 
 import android.annotation.SuppressLint
 import android.support.annotation.NonNull
@@ -15,17 +15,19 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.meetropolys.meetropolys.MeetroopolysApplication
+import com.meetropolys.meetropolys.R
 import com.meetropolys.meetropolys.services.Constants
 import com.meetropolys.meetropolys.services.Constants.GOOGLE_AUTH_KEY
 import com.meetropolys.meetropolys.services.navigation.NavigationController
 import com.meetropolys.meetropolys.services.navigation.Screen
 import com.meetropolys.meetropolys.services.navigation.ScreenType
+import com.meetropolys.meetropolys.tools.Tools
 import com.meetropolys.meetropolys.ui.base.mvp.SocialPresenter
 import com.orhanobut.hawk.Hawk
 import java.lang.StringBuilder
 
-class SignInPresenter(var view: SignInContract.View, var navigationController: NavigationController) :
-    SocialPresenter(view), SignInContract.Presenter {
+class SignUpPresenter(var view: SignUpContract.View, var navigationController: NavigationController) :
+    SocialPresenter(view), SignUpContract.Presenter {
 
     @SuppressLint("CheckResult")
     override fun resume() {
@@ -37,6 +39,17 @@ class SignInPresenter(var view: SignInContract.View, var navigationController: N
             view.facebookAuth()
 
         }
+        view.onCreateAccount().subscribe {
+            createAccount()
+        }
+    }
+
+    private fun createAccount() {
+        if (isCorrectEmail() && isCorrectPassword()) {
+              navigationController.navigateTo(Screen.CONFIRM_EMAIL_ACTIVITY, ScreenType.ACTIVITY)
+
+        }
+
     }
 
     override fun pause() {
@@ -69,6 +82,45 @@ class SignInPresenter(var view: SignInContract.View, var navigationController: N
 
     }
 
+
+    private fun isCorrectPassword(): Boolean {
+        val password = view.getUserPasswordText()
+        if (password.isEmpty()) {
+            view.showWarningMessage(
+                MeetroopolysApplication.instance.getResources().getString(R.string.error_empty_password),
+                10000
+            )
+
+            return false
+        }
+        if (password.length < 6 || password.length > 128) {
+            view.showWarningMessage(
+                MeetroopolysApplication.instance.getResources().getString(R.string.error_password),
+                10000
+            )
+            return false
+        }
+        return true
+    }
+
+    private fun isCorrectEmail(): Boolean {
+        val email = view.getUserEmailText()
+        if (email.isEmpty()) {
+            view.showWarningMessage(
+                MeetroopolysApplication.instance.getResources().getString(R.string.error_empty_email),
+                10000
+            )
+            return false
+        }
+        if (!Tools.isValidEmail(email)) {
+            view.showWarningMessage(
+                MeetroopolysApplication.instance.getResources().getString(R.string.error_empty_email),
+                10000
+            )
+            return false
+        }
+        return true
+    }
 }
 
 

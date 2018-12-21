@@ -20,12 +20,13 @@
 
             <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-
                     android:layout_marginLeft="@dimen/base_left_margin"
                     android:layout_marginRight="24dp"
                     android:layout_height="wrap_content">
 
                 <android.support.design.widget.TextInputEditText
+                        android:id="@+id/email_tie"
+                        android:inputType="textEmailAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/title_user_email"/>
@@ -40,6 +41,9 @@
                     android:layout_height="wrap_content">
 
                 <android.support.design.widget.TextInputEditText
+                        android:inputType="textPassword"
+                        android:id="@+id/pass_tie"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/title_user_password"/>
@@ -52,7 +56,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/bottom_btn_height"
                     android:background="@drawable/background_rect_pink"
-                    android:text="Create account"/>
+                    android:text="@string/create_account"/>
 
             <TextView android:layout_width="wrap_content"
                       android:layout_marginTop="32dp"
@@ -61,12 +65,13 @@
                       android:text="Or sign in with"
                       android:layout_height="wrap_content"/>
 
+
             <include layout="@layout/facebook_button_view"/>
             <include layout="@layout/google_button_view"/>
-
 
         </LinearLayout>
 
     </ScrollView>
+
 
 </RelativeLayout>
